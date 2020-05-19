@@ -1,7 +1,8 @@
-import 'package:bloc/bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+
 import 'universal_bloc_dispatcher.dart';
 
-abstract class UniversalBloc<EventType, StateType> extends Bloc<EventType, StateType> {
+abstract class UniversalBloc<EventType, StateType> extends HydratedBloc<EventType, StateType> {
 
   Map<Type, UniversalDispatcher<EventType, StateType>> _dispatchersMap;
 

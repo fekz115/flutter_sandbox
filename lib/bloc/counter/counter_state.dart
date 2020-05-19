@@ -10,4 +10,13 @@ class CounterState extends Equatable{
   @override
   List<Object> get props => [value];
 
+  factory CounterState.fromJson(Map<String, dynamic> json) {
+    return CounterState(json['value']);
+  }
+
+  Map<String, dynamic> toJson() =>
+    {
+      'value': value,
+    };
+
 }
