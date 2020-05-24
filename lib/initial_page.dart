@@ -14,15 +14,23 @@ class InitialPage extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Opacity(
-          opacity: 0.5,
-          child: Text(
-            'This is sandbox Flutter project',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 22.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image(
+              image: AssetImage("assets/images/flutter_logo.png"),
             ),
-          ),
+            Opacity(
+              opacity: 0.5,
+              child: Text(
+                'This is sandbox Flutter project',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 22.0,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       drawer: Drawer(
