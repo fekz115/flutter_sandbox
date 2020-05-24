@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'bloc/theme/theme_dispatcher.dart';
-import 'bloc/theme/theme_page.dart';
 import 'bloc/theme/theme_state.dart';
 
 void main() async {
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
       ], ThemeData()),
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, state) => MaterialApp(
-          title: 'Flutter Demo',
           theme: state.themeData,
           builder: ExtendedNavigator<Router>(router: Router(),),
         ),
