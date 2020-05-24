@@ -35,6 +35,7 @@ class CounterPage extends StatelessWidget {
 
   List<Widget> buildButtons(CounterBloc bloc, Map<Icon, CounterEvent> map) {
     List<Widget> ans = new List();
+    int tag = 0;
     map.forEach((k, v) => {
           ans.add(
             Padding(
@@ -43,6 +44,7 @@ class CounterPage extends StatelessWidget {
                 child: k,
                 onPressed: () => bloc.add(v),
                 tooltip: v.toString(),
+                heroTag: 'heroTag' + (tag++).toString(),
               ),
             ),
           ),
