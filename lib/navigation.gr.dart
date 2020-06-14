@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:NewSandbox/initial_page.dart';
+import 'package:NewSandbox/navigation.dart';
 import 'package:NewSandbox/bloc/counter/counter_page.dart';
 import 'package:NewSandbox/bloc/theme/theme_page.dart';
 
@@ -40,20 +41,27 @@ class Router extends RouterBase {
         }
         final typedArgs =
             args as InitialPageArguments ?? InitialPageArguments();
-        return MaterialPageRoute<dynamic>(
-          builder: (context) =>
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (context, animation, secondaryAnimation) =>
               InitialPage(key: typedArgs.key, title: typedArgs.title),
           settings: settings,
+          transitionsBuilder: zoomInTransition,
+          transitionDuration: const Duration(milliseconds: 400),
         );
       case Routes.counterPage:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => CounterPage(),
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              CounterPage(),
           settings: settings,
+          transitionsBuilder: zoomInTransition,
+          transitionDuration: const Duration(milliseconds: 400),
         );
       case Routes.themePage:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => ThemePage(),
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (context, animation, secondaryAnimation) => ThemePage(),
           settings: settings,
+          transitionsBuilder: zoomInTransition,
+          transitionDuration: const Duration(milliseconds: 400),
         );
       default:
         return unknownRoutePage(settings.name);
