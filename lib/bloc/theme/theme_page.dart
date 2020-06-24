@@ -85,6 +85,10 @@ class ThemePage extends StatelessWidget {
           value: color.value,
           title: Text(title),
           groupValue: colorGroup,
+          secondary: Icon(
+            Icons.color_lens,
+            color: Color(color.value),
+          ),
           onChanged: (value) => bloc.add(ChangeColorThemeEvent(Color(value))),
         );
       },
