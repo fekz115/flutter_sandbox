@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemePage extends StatelessWidget {
-
   final Map<String, Brightness> brightnessMap = {
     'Light': Brightness.light,
     'Dark': Brightness.dark,
@@ -34,40 +33,40 @@ class ThemePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Theme change page'),
+      appBar: AppBar(
+        title: Text('Theme change page'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0),
+              child: Text(
+                "Color:",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            _buildColorsList(context, colorsMap),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0),
+              child: Text(
+                "Brightness:",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            _buildBrightnessList(context, brightnessMap)
+          ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0),
-                child: Text(
-                  "Color:",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-              _buildColorsList(context, colorsMap),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0),
-                child: Text(
-                  "Brightness:",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-              _buildBrightnessList(context, brightnessMap)
-            ],
-          ),
-        )
+      ),
     );
   }
 
@@ -92,7 +91,8 @@ class ThemePage extends StatelessWidget {
     );
   }
 
-  Widget _buildBrightnessList(BuildContext context, Map<String, Brightness> brightnessMap) {
+  Widget _buildBrightnessList(
+      BuildContext context, Map<String, Brightness> brightnessMap) {
     Brightness brightnessGroup = Theme.of(context).brightness;
     ThemeBloc bloc = BlocProvider.of<ThemeBloc>(context);
     return ListView.builder(
@@ -100,7 +100,8 @@ class ThemePage extends StatelessWidget {
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, position) {
-        MapEntry<String, Brightness> entry = brightnessMap.entries.skip(position).first;
+        MapEntry<String, Brightness> entry =
+            brightnessMap.entries.skip(position).first;
         Brightness brightness = entry.value;
         String title = entry.key;
         return RadioListTile<Brightness>(
