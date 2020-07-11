@@ -40,29 +40,9 @@ class ThemePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0),
-              child: Text(
-                "Color:",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-              ),
-            ),
+            _buildTitle("Color:"),
             _buildColorsList(context, colorsMap),
-            Padding(
-              padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0),
-              child: Text(
-                "Brightness:",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25,
-                ),
-              ),
-            ),
+            _buildTitle("Brightness:"),
             _buildBrightnessList(context, brightnessMap)
           ],
         ),
@@ -115,6 +95,20 @@ class ThemePage extends StatelessWidget {
           onChanged: (value) => bloc.add(ChangeBrightnessThemeEvent(value)),
         );
       },
+    );
+  }
+
+  Widget _buildTitle(String title) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 10.0),
+      child: Text(
+        title,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 25,
+        ),
+      ),
     );
   }
 }
