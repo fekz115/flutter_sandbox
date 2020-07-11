@@ -1,3 +1,4 @@
+import 'package:NewSandbox/l10n.dart';
 import 'package:flutter/rendering.dart';
 
 import 'theme_bloc.dart';
@@ -34,15 +35,15 @@ class ThemePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Theme change page'),
+        title: Text(SandboxLocalizations.of(context).themePage),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildTitle("Color:"),
+            _buildTitle('${SandboxLocalizations.of(context).color}:'),
             _buildColorsList(context, colorsMap),
-            _buildTitle("Brightness:"),
+            _buildTitle('${SandboxLocalizations.of(context).brightness}:'),
             _buildBrightnessList(context, brightnessMap)
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:NewSandbox/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +17,7 @@ class CounterPage extends StatelessWidget {
           ]),
       child: BlocBuilder<CounterBloc, CounterState>(
         builder: (context, state) => Scaffold(
-          appBar: AppBar(title: Text('Counter')),
+          appBar: AppBar(title: Text(SandboxLocalizations.of(context).counterPage),),
           body: CounterWidget(),
           floatingActionButton: Row(
             mainAxisAlignment: MainAxisAlignment.end,

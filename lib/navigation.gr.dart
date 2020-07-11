@@ -43,7 +43,7 @@ class Router extends RouterBase {
             args as InitialPageArguments ?? InitialPageArguments();
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) =>
-              InitialPage(key: typedArgs.key, title: typedArgs.title),
+              InitialPage(key: typedArgs.key),
           settings: settings,
           transitionsBuilder: zoomInTransition,
           transitionDuration: const Duration(milliseconds: 400),
@@ -76,6 +76,5 @@ class Router extends RouterBase {
 //InitialPage arguments holder class
 class InitialPageArguments {
   final Key key;
-  final String title;
-  InitialPageArguments({this.key, this.title = "Flutter Sandbox"});
+  InitialPageArguments({this.key});
 }
